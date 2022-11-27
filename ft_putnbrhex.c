@@ -1,35 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_variables.c                                     :+:      :+:    :+:   */
+/*   ft_putnbrbase.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbraga-s <mbraga-s@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 19:06:37 by mbraga-s          #+#    #+#             */
-/*   Updated: 2022/11/22 19:11:03 by mbraga-s         ###   ########.fr       */
+/*   Created: 2022/11/25 20:47:46 by mbraga-s          #+#    #+#             */
+/*   Updated: 2022/11/25 20:47:46 by mbraga-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_variables(char *s, int i)
+#include "libftprintf.h"
+
+void	ft_putnbrhex(unsigned int c)
 {
-	i++;
-	if (s[i] == 'c')
-		ft_putchar();
-	else if (s[i] == 's')
-		ft_putstr();
-	else if (s[i] == 'p')
-		ft_putptr();
-	else if (s[i] == 'd')
-		ft_
-	else if (s[i] == 'i')
-		ft_
-	else if (s[i] == 'u')
-		ft_
-	else if (s[i] == 'x')
-		ft_
-	else if (s[i] == 'X')
-		ft_
-	else if (s[i] == '%')
-		ft_
-		
+	char	*ptr;
+
+	ptr = "0123456789abcdef";
+	if (c < 16)
+	{	
+		write (1, &ptr[c], 1);
+	}
+	if (c >= 16)
+	{
+		ft_putnbrhex (c / 16);
+		ft_putnbrhex (c % 16);
+	}
 }
+
+/* int 	main (void)
+{
+	unsigned int	a = 352234;
+
+	ft_putnbrhex(a);
+	printf("\n%x", a);
+	return (0);
+} */

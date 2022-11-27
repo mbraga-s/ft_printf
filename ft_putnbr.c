@@ -1,35 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbraga-s <mbraga-s@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 18:48:55 by mbraga-s          #+#    #+#             */
-/*   Updated: 2022/11/22 19:00:12 by mbraga-s         ###   ########.fr       */
+/*   Created: 2022/11/08 18:48:00 by mbraga-s          #+#    #+#             */
+/*   Updated: 2022/11/10 09:55:25 by mbraga-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#include "libftprintf.h"
 
-# include <stdarg.h>
-# include <limits.h>
-# include <unistd.h>
-# include <stdio.h>
+void	ft_putnbr(int n)
+{
+	char	c;
 
-int		ft_printf(const char *, ...);
-
-void	ft_putchar(int c);
-
-void	ft_putnbr(int n);
-
-void	ft_putnbrhex(unsigned int c);
-
-void	ft_putstr(char *s);
-
-void	ft_unsputnbr(unsigned int n);
-
-void	ft_upperputnbrhex(unsigned int c);
-
-#endif
+	if (n == INT_MIN)
+	{
+		write (1, "-2", 2);
+		n = 147483648;
+	}
+	if (n < 0)
+	{
+		write (1, "-", 1);
+		n = -n;
+	}
+	if (n > 9)
+	{
+		ft_putnbr((n / 10));
+		n = n % 10;
+	}
+	if (n <= 9 && n >= 0)
+	{
+		c = (48 + n);
+		write (1, &c, 1);
+	}
+}

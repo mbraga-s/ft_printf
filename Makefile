@@ -12,8 +12,8 @@
 
 NAME = libftprintf.a
 
-SRCS = ft_printf ft_putchar ft_putstr\
-
+SRCS = ft_printf ft_putchar ft_putstr ft_putnbr\
+ft_putnbrhex ft_upperputnbrhex\
 
 CC = CC
 CFLAGS = -Wall -Wextra -Werror
