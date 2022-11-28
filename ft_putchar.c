@@ -6,16 +6,14 @@
 /*   By: mbraga-s <mbraga-s@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 18:51:16 by mbraga-s          #+#    #+#             */
-/*   Updated: 2022/11/22 18:52:14 by mbraga-s         ###   ########.fr       */
+/*   Updated: 2022/11/28 15:54:31 by mbraga-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
-void	ft_putchar(int c)
+void	ft_putchar(int c, int *len)
 {
-	char a;
-
-	a = c;
 	write (1, &c, 1);
+	(*len)++;
 }

@@ -1,35 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbraga-s <mbraga-s@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 18:48:55 by mbraga-s          #+#    #+#             */
-/*   Updated: 2022/11/22 19:00:12 by mbraga-s         ###   ########.fr       */
+/*   Updated: 2022/11/28 16:09:03 by mbraga-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
 # include <stdarg.h>
 # include <limits.h>
 # include <unistd.h>
 # include <stdio.h>
 
-int		ft_printf(const char *, ...);
+int		ft_printf(const char *str, ...);
 
-void	ft_putchar(int c);
+void	ft_putchar(int c, int *len);
 
-void	ft_putnbr(int n);
+void	ft_putnbr(int n, int *len);
 
-void	ft_putnbrhex(unsigned int c);
+void	ft_putnbrhex(unsigned int c, int *len);
 
-void	ft_putstr(char *s);
+void	ft_putptr(void *s, int *len);
 
-void	ft_unsputnbr(unsigned int n);
+void	ft_putstr(const char *s, int *len);
 
-void	ft_upperputnbrhex(unsigned int c);
+void	ft_unsputnbr(unsigned int n, int *len);
+
+void	ft_upperputnbrhex(unsigned int c, int *len);
 
 #endif

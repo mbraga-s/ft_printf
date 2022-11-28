@@ -6,16 +6,16 @@
 #    By: mbraga-s <mbraga-s@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 18:15:12 by mbraga-s          #+#    #+#              #
-#    Updated: 2022/11/22 19:34:14 by mbraga-s         ###   ########.fr        #
+#    Updated: 2022/11/28 15:50:00 by mbraga-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
 SRCS = ft_printf ft_putchar ft_putstr ft_putnbr\
-ft_putnbrhex ft_upperputnbrhex\
+ft_putnbrhex ft_upperputnbrhex ft_unsputnbr ft_putptr\
 
-CC = CC
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
 RM = rm -fr

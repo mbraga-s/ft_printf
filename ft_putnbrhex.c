@@ -1,38 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbrbase.c                                    :+:      :+:    :+:   */
+/*   ft_putnbrhex.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbraga-s <mbraga-s@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 20:47:46 by mbraga-s          #+#    #+#             */
-/*   Updated: 2022/11/25 20:47:46 by mbraga-s         ###   ########.fr       */
+/*   Updated: 2022/11/28 15:51:39 by mbraga-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
-void	ft_putnbrhex(unsigned int c)
+void	ft_putnbrhex(unsigned int c, int *len)
 {
 	char	*ptr;
 
 	ptr = "0123456789abcdef";
 	if (c < 16)
 	{	
-		write (1, &ptr[c], 1);
+		ft_putchar (ptr[c], len);
 	}
 	if (c >= 16)
 	{
-		ft_putnbrhex (c / 16);
-		ft_putnbrhex (c % 16);
+		ft_putnbrhex (c / 16, len);
+		ft_putnbrhex (c % 16, len);
 	}
 }
-
-/* int 	main (void)
-{
-	unsigned int	a = 352234;
-
-	ft_putnbrhex(a);
-	printf("\n%x", a);
-	return (0);
-} */

@@ -6,59 +6,72 @@
 /*   By: mbraga-s <mbraga-s@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 18:13:08 by mbraga-s          #+#    #+#             */
-/*   Updated: 2022/11/22 18:47:20 by mbraga-s         ###   ########.fr       */
+/*   Updated: 2022/11/28 16:18:40 by mbraga-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
+
+void	ft_params(va_list arg, const char *str, int i, int *len)
+{
+	if (str[i] == 'c')
+		ft_putchar (va_arg(arg, int), len);
+	else if (str[i] == 's')
+		ft_putstr (va_arg(arg, char *), len);
+	else if (str[i] == 'p')
+		ft_putptr (va_arg(arg, void *), len);
+	else if (str[i] == 'd' || str[i] == 'i')
+		ft_putnbr (va_arg(arg, int), len);
+	else if (str[i] == 'u')
+		ft_unsputnbr (va_arg(arg, unsigned int), len);
+	else if (str[i] == 'x')
+		ft_putnbrhex(va_arg(arg, unsigned int), len);
+	else if (str[i] == 'X')
+		ft_upperputnbrhex(va_arg(arg, unsigned int), len);
+	else if (str[i] == '%')
+		ft_putchar (str[i], len);
+}
 
 int	ft_printf(const char *str, ...)
 {
 	va_list	arg;
 	int		i;
 	int		flag;
+	int		len;
 
 	va_start (arg, str);
 	i = 0;
+	len = 0;
 	flag = 0;
 	while (str[i])
 	{
 		if (flag == 1)
 		{
-			if (str[i] == 'c')
-				ft_putchar (va_arg(arg, int));
-			else if (str[i] == 's')
-				ft_putstr (va_arg(arg, char *));
-	//		else if (str[i] == 'p')
-	//			ft_putptr (va_arg(arg, void *));
-			else if (str[i] == 'd' || str[i] == 'i')
-				ft_putnbr (va_arg(arg, int));
-			else if (str[i] == 'u')
-				ft_unsputnbr (va_arg(arg, unsigned int));
-			else if (str[i] == 'x')
-				ft_putnbrhex(va_arg(arg, unsigned int));
-			else if (str[i] == 'X')
-				ft_upperputnbrhex(va_arg(arg, unsigned int));
-			else if (str[i] == '%')
-				ft_putchar (str[i]);
+			ft_params (arg, str, i, &len);
 			flag = 0;
 		}
 		else if (str[i] == '%' && flag == 0)
 			flag = 1;
 		else
-			ft_putchar (str[i]);
+			ft_putchar (str[i], &len);
 		i++;
 	}
 	va_end (arg);
+	return (len);
 }
 
-int	main(void)
+/* int	main(void)
 {
-	char *ptr = "Heio mate";
-	char a = 'v';
-	int i = -23;
-	unsigned int h = 352;
+	char			*ptr;
+	char			a;
+	int				i;
+	unsigned int	h;
 
-	ft_printf("%s  %c  %i %X", ptr, a, i, h);
-	printf("\n%s  %c  %i %X", ptr, a, i, h);
+	ptr = " Hello mate";
+	a = 'v';
+	i = -23;
+	h = 3520;
+	ft_printf(" %p %p ", 0, 0);
+	printf(" %p %p ", 0, 0);
 }
+ */
